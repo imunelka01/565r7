@@ -16,14 +16,15 @@ jobs:
       - name: Checkout code
       - uses: actions/checkout@v2
       
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
-        with:
-           node-version: '14'
+      - run: Docker build
+
       - name: Install dependencies
         run: npm install
         
-      - name: Build
+      - name: Docker build
+        run: npm run build
+        
+      - name: Docker push
         run: npm run build
 
       - name: Archive build artifacts
